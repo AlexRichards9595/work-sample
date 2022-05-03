@@ -1,0 +1,16 @@
+.Post {
+    display: flex;
+    flex-direction: column;
+    background-color: blueviolet;
+    align-items: flex-start;
+    padding: 1rem;
+}
+
+.post-counts {
+    display: flex;
+    flex-direction: row;
+}
+
+.post-counts > p {
+    margin-right: 1rem;
+}
