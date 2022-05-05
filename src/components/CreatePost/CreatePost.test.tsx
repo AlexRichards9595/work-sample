@@ -26,4 +26,19 @@ describe('<CreatePost />', () => {
 
         expect(input).toHaveValue('');
     });
+
+    test('it should call createPost with input text when form is submitted', () => {
+        const createPost = jest.fn();
+        render(<CreatePost createPost= {createPost}/>);
+
+        const input = screen.getByPlaceholderText("What's on your mind?");
+
+        fireEvent.change(input, { target: { value: 'post content'}});
+
+        const form = screen.getByTestId('CreatePost');
+
+        fireEvent.submit(form);
+
+        expect(createPost).toBeCalledWith('post content');
+    });
 });
