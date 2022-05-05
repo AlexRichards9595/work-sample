@@ -4,16 +4,17 @@ import './App.css';
 import Feed from "./components/Feed/Feed";
 import {PostData} from "./models/PostData";
 import CreatePost from "./components/CreatePost/CreatePost";
+import {User} from "./models/User";
 
 function App() {
     const [posts, setPosts] = useState<Array<PostData>>([]);
-    const user = {
+    const user: User = {
         username: "Alex Richards",
-        pictureURL: 'grumpy-cat.jpeg'
+        profilePicture: 'grumpy-cat.jpeg'
     };
 
     const createPost = (content: string) => {
-        setPosts([...posts, new PostData(user.username, user.pictureURL, content)])
+        setPosts([...posts, new PostData(user, content)])
     }
     return (
     <div className="App">

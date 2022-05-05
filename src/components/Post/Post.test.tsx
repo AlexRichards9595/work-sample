@@ -3,9 +3,10 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Post from './Post';
 import {PostData} from "../../models/PostData";
+import {User} from "../../models/User";
 
 describe('<Post />', () => {
-    const postData = new PostData("username", "profilePictureURL", "post content")
+    const postData = new PostData(new User("username", "grumpy-cat.jpeg"), "post content")
   test('it should mount', () => {
     render(<Post postData={postData}/>);
 
