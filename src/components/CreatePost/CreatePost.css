@@ -1,18 +1,56 @@
 .CreatePost {
     display: flex;
     flex-direction: column;
-    background-color: white;
-    width: auto;
-    padding: .5rem;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    width: 800px;
+    height: 137px;
+    padding: 16px;
+    margin: 16px 0;
+    border: 1px solid #CED7E7;
+    border-radius: 10px;
+}
+
+input {
+    height: 50px;
+    border: 1px solid #CED7E7;
+    border-radius: 8px;
+    padding: 16px;
+    box-sizing: border-box;
 }
 
 .bottom {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    height: 39px;
 }
 
 .bottom-buttons {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    width: 30%;
+    justify-content: space-between;
+    font-size: 14px;
+    color: rgba(18, 21, 29, 0.6);
+}
+
+.bottom-buttons > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 45%;
+    margin-right: 20px;
+}
+
+button {
+    background-color: #006CFA;
+    width: 80px;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
 }

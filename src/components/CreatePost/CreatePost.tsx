@@ -1,6 +1,7 @@
-import React, {FC, useState} from 'react';
+import React, {FC, FormEvent, useState} from 'react';
 import './CreatePost.css';
-import {PostData} from "../../models/PostData";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faVideo, faCamera} from "@fortawesome/free-solid-svg-icons";
 
 interface CreatePostProps {
     createPost: (content: string) => void,
@@ -8,17 +9,30 @@ interface CreatePostProps {
 
 const CreatePost: FC<CreatePostProps> = (props) => {
     const [content, setContent] = useState('');
+
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        props.createPost(content);
+        setContent('');
+    }
+
     return (
-        <div className="CreatePost" data-testid="CreatePost">
-            <input onChange={event => setContent(event.target.value)} type="text" placeholder="What's on your mind?"/>
+        <form className="CreatePost" onSubmit={handleSubmit} data-testid="CreatePost">
+            <input value={content} onChange={event => setContent(event.target.value)} type="text" placeholder="What's on your mind?"/>
             <div className="bottom">
                 <div className="bottom-buttons">
-                    <p>Add media</p>
-                    <p>Go live</p>
+                    <div>
+                        <FontAwesomeIcon icon={faCamera} />
+                        <p>Add media</p>
+                    </div>
+                    <div>
+                        <FontAwesomeIcon icon={faVideo} />
+                        <p>Add media</p>
+                    </div>
                 </div>
-                <button onClick={() => props.createPost(content)}>Post</button>
+                <button type='submit'>Post</button>
             </div>
-        </div>
+        </form>
     );
 }
 
