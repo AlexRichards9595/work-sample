@@ -14,10 +14,10 @@ function App() {
     }
     return (
     <div className="App">
-        <body>
+        <div>
             <CreatePost createPost = {(content) => createPost(content)}/>
             <Feed posts = {posts}/>
-        </body>
+        </div>
     </div>
     );
 }
