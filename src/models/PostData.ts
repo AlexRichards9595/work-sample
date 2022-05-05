@@ -1,5 +1,6 @@
 export class PostData {
     username: string
+    profilePicture: string
     content: string
     dateCreated: Date
     hypes: number
@@ -7,8 +8,9 @@ export class PostData {
     views: number
     comments: Array<{}>
 
-    constructor(username: string, content: string) {
+    constructor(username: string, profilePicture: string, content: string) {
         this.username = username
+        this.profilePicture = profilePicture
         this.content = content
         this.dateCreated = new Date()
         this.hypes = 0

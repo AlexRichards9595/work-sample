@@ -9,7 +9,12 @@ interface PostProps {
 const Post: FC<PostProps> = (props) => (
   <div className="Post" data-testid="Post">
       <div className="post-header">
-          {props.postData.username}
+          <img src={require(`../../assets/images/${props.postData.profilePicture}`)} alt={"Profile"}/>
+          <div className="post-header-text">
+              <p>{props.postData.username}</p>
+               {/*TODO: Display time logic*/}
+              <p>2 minutes ago</p>
+          </div>
       </div>
       <div className="post-body">
           {props.postData.content}

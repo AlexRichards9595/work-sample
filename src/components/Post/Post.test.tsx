@@ -5,7 +5,7 @@ import Post from './Post';
 import {PostData} from "../../models/PostData";
 
 describe('<Post />', () => {
-    const postData = new PostData("username", "post content")
+    const postData = new PostData("username", "profilePictureURL", "post content")
   test('it should mount', () => {
     render(<Post postData={postData}/>);
 
