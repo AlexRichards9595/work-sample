@@ -2,19 +2,20 @@ import React, {useState} from 'react';
 
 import './App.css';
 import Feed from "./components/Feed/Feed";
-import {PostData} from "./models/PostData";
+import {CommentablePostData} from "./models/CommentablePostData";
 import CreatePost from "./components/CreatePost/CreatePost";
 import {User} from "./models/User";
+import {PostData} from "./models/PostData";
 
 function App() {
-    const [posts, setPosts] = useState<Array<PostData>>([]);
+    const [posts, setPosts] = useState<Array<CommentablePostData>>([]);
     const user: User = {
         username: "Alex Richards",
         profilePicture: 'grumpy-cat.jpeg'
     };
 
     const createPost = (content: string) => {
-        setPosts([...posts, new PostData(user, content)])
+        setPosts([...posts, new CommentablePostData(new PostData(user, content))])
     }
     return (
     <div className="App">

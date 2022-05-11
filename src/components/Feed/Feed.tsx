@@ -1,11 +1,10 @@
 import React, {FC, useState} from 'react';
 import './Feed.css';
-import CreatePost from "../CreatePost/CreatePost";
 import Post from "../Post/Post";
-import {PostData} from "../../models/PostData";
+import {CommentablePostData} from "../../models/CommentablePostData";
 
 interface FeedProps {
-    posts: Array<PostData>
+    posts: Array<CommentablePostData>
 }
 
 const Feed: FC<FeedProps> = (props) => (

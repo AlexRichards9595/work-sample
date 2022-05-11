@@ -1,41 +1,50 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {ChangeEvent, FC, useEffect, useState} from 'react';
 import './Post.css';
-import {PostData} from "../../models/PostData";
-import {faFireFlameCurved, faShareNodes} from "@fortawesome/free-solid-svg-icons";
+import {CommentablePostData} from "../../models/CommentablePostData";
+import {faCirclePlus, faFireFlameCurved, faShareNodes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {getTimeText} from "../../helpers/timeTextHelper";
+import {faMessage} from "@fortawesome/free-regular-svg-icons";
+import {PostData} from "../../models/PostData";
+import PostComment from "../PostComment/PostComment";
 
 interface PostProps {
-    postData: PostData,
+    postData: CommentablePostData,
 }
 
 const Post: FC<PostProps> = (props) => {
-    const [timeText, setTimeText] = useState(getTimeText(props.postData.dateCreated));
-    useEffect(() => {
-        setInterval(() => {
-            setTimeText(getTimeText(props.postData.dateCreated));
-        }, 1000);
-    })
+    const [comment, setComment] = useState('');
+
+    const handleCommentChange = (input: string) => {
+       setComment(input);
+    }
+
+    const handleCommentSubmit = () => {
+        props.postData.comments.push(new PostData(props.postData.postData.user, comment));
+        setComment('');
+    }
 
     return (
         <div className="Post" data-testid="Post">
-            <div className="post-header">
-                <img src={require(`../../assets/images/${props.postData.user.profilePicture}`)} alt={"Profile"}/>
-                <div className="post-header-text">
-                    <h2>{props.postData.user.username}</h2>
-                    <p>{timeText}</p>
+            <PostComment postData={props.postData.postData} />
+            <div className="comment">
+                <div className="comment-left">
+                    <FontAwesomeIcon className="comment-icon" icon={faMessage} />
+                    <input
+                        value={comment}
+                        className="comment-text"
+                        placeholder="Add comment"
+                        onKeyDown={e => {
+                            if (e.key === 'Enter') {
+                                handleCommentSubmit();
+                            }}}
+                        onChange={event => handleCommentChange(event.currentTarget.value)}
+                    />
                 </div>
+                <FontAwesomeIcon className="comment-icon" icon={faCirclePlus} />
             </div>
-            <div className="post-body">
-                {props.postData.content}
-                <div className="post-counts">
-                    <FontAwesomeIcon className="icon" icon={faFireFlameCurved}/>
-                    <p>{props.postData.hypes} Hypes</p>
-                    <FontAwesomeIcon className="icon" icon={faShareNodes}/>
-                    <p>12 Shares</p>
-                    <p>100 Views</p>
-                </div>
-            </div>
+            {props.postData.comments.length > 0 && <hr className="post-comment-divider"/>}
+            {props.postData.comments.map((post, index) => <PostComment key = {index} postData = {post} />)}
         </div>
     );
 }
