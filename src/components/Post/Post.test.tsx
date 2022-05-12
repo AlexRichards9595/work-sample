@@ -8,7 +8,7 @@ import {PostData} from "../../models/PostData";
 describe('<Post />', () => {
     const postData = new PostData(new User("username", "grumpy-cat.jpeg"), "post content");
   test('it should mount', () => {
-    render(<Post addHype={() => {}} postData={postData}/>);
+    render(<Post updatePosts={() => {}} postData={postData}/>);
 
     const post = screen.getByTestId('Post');
 

@@ -9,29 +9,32 @@ import {addHype} from "../../helpers/addHypeHelper/addHypeHelper";
 
 interface PostProps {
     postData: PostData,
-    addHype(): any
+    updatePosts(post: PostData): any
 }
 
 const Post: FC<PostProps> = (props) => {
     const [commentInput, setCommentInput] = useState('');
-    const [comments, setComments] = useState<PostData[]>([])
 
     const handleCommentChange = (input: string) => {
        setCommentInput(input);
     }
 
     const handleCommentSubmit = () => {
-        setComments([...comments, new PostData(props.postData.user, commentInput)]);
+        props.postData.comments.push(new PostData(props.postData.user, commentInput));
         setCommentInput('');
     }
 
-    const handleHype = (index: number) => {
-        setComments(addHype(comments, index));
+    const handleCommentHype = (index: number) => {
+        const updatedPost = {
+            ...props.postData,
+            comments: addHype(props.postData.comments, index),
+        }
+        props.updatePosts(updatedPost);
     }
 
     return (
         <div className="Post" data-testid="Post">
-            <PostComment postData={props.postData} addHype={() => props.addHype()}/>
+            <PostComment postData={props.postData} addHype={() => props.updatePosts({...props.postData, hypes: props.postData.hypes + 1})}/>
             <div className="comment">
                 <div className="comment-left">
                     <FontAwesomeIcon className="comment-icon" icon={faMessage} />
@@ -48,8 +51,8 @@ const Post: FC<PostProps> = (props) => {
                 </div>
                 <FontAwesomeIcon className="comment-icon" icon={faCirclePlus} />
             </div>
-            {comments.length > 0 && <hr className="post-comment-divider"/>}
-            {comments.map((post, index) => <PostComment addHype={() => handleHype(index)} key = {index} postData = {post} />)}
+            {props.postData.comments.length > 0 && <hr className="post-comment-divider"/>}
+            {props.postData.comments.map((post, index) => <PostComment addHype={() => handleCommentHype(index)} key = {index} postData = {post} />)}
         </div>
     );
 }

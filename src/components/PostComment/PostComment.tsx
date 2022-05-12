@@ -12,8 +12,9 @@ interface PostCommentProps {
 }
 
 const PostComment: FC<PostCommentProps> = (props) => {
-    const [timeText, setTimeText] = useState(getTimeText(props.postData.dateCreated));
+    const [timeText, setTimeText] = useState('');
     useEffect(() => {
+        setTimeText(getTimeText(props.postData.dateCreated));
         setInterval(() => {
             setTimeText(getTimeText(props.postData.dateCreated));
         }, 1000);

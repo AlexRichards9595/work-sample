@@ -22,11 +22,20 @@ function App() {
         setPosts(addHype(posts, index));
     }
 
+    const updatePost = (post: PostData, index: number) => {
+        setPosts(posts.map((e, i) => {
+            if (i === index) {
+                e = post
+            }
+            return e
+        }))
+    }
+
     return (
     <div className="App">
         <div className='container'>
             <CreatePost createPost = {(content) => createPost(content)}/>
-            {posts.map((post, index) => <Post key={index} addHype={() => handleHype(index)} postData={post}/>)}
+            {posts.map((post, index) => <Post key={index} updatePosts={(post) => updatePost(post, index)} postData={post}/>)}
         </div>
     </div>
     );
