@@ -1,15 +1,8 @@
 import React from 'react';
 import {fireEvent, render, screen} from '@testing-library/react';
 import App from './App';
-import Feed from "./components/Feed/Feed";
 
 describe('App', () => {
-  test('renders learn react link', () => {
-    render(<App />);
-    const feedElement = screen.getByTestId('Feed');
-    expect(feedElement).toBeInTheDocument();
-  });
-
   test('it should post content when Post button is clicked', () => {
     render(<App />);
 
