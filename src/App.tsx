@@ -5,7 +5,6 @@ import CreatePost from "./components/CreatePost/CreatePost";
 import {User} from "./models/User";
 import {PostData} from "./models/PostData";
 import Post from "./components/Post/Post";
-import {addHype} from "./helpers/addHypeHelper/addHypeHelper";
 
 function App() {
     const [posts, setPosts] = useState<PostData[]>([]);
@@ -16,10 +15,6 @@ function App() {
 
     const createPost = (content: string) => {
         setPosts([new PostData(user, content), ...posts])
-    }
-
-    const handleHype = (index: number) => {
-        setPosts(addHype(posts, index));
     }
 
     const updatePost = (post: PostData, index: number) => {

@@ -18,7 +18,7 @@ const PostComment: FC<PostCommentProps> = (props) => {
         setInterval(() => {
             setTimeText(getTimeText(props.postData.dateCreated));
         }, 1000);
-    })
+    }, [props.postData.dateCreated])
 
     return (
         <div className="PostComment" data-testid="PostComment">

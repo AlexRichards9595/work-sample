@@ -5,7 +5,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMessage} from "@fortawesome/free-regular-svg-icons";
 import {PostData} from "../../models/PostData";
 import PostComment from "../PostComment/PostComment";
-import {addHype} from "../../helpers/addHypeHelper/addHypeHelper";
 
 interface PostProps {
     postData: PostData,
@@ -27,7 +26,13 @@ const Post: FC<PostProps> = (props) => {
     const handleCommentHype = (index: number) => {
         const updatedPost = {
             ...props.postData,
-            comments: addHype(props.postData.comments, index),
+            comments: props.postData.comments.map((e, i) => {
+                if (i === index) {
+                    e.hypes++
+                    return e;
+                }
+                return e
+            })
         }
         props.updatePosts(updatedPost);
     }
