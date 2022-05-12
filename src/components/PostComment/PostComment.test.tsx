@@ -9,7 +9,7 @@ describe('<PostComment />', () => {
   const postData = new PostData(new User("username", "grumpy-cat.jpeg"), "post content")
 
   test('it should mount', () => {
-    render(<PostComment postData={postData}/>);
+    render(<PostComment addHype={() => {}} postData={postData}/>);
     
     const postComment = screen.getByTestId('PostComment');
 

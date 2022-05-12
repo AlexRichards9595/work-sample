@@ -1,37 +1,42 @@
-import React, {ChangeEvent, FC, useEffect, useState} from 'react';
+import React, {FC, useState} from 'react';
 import './Post.css';
-import {CommentablePostData} from "../../models/CommentablePostData";
-import {faCirclePlus, faFireFlameCurved, faShareNodes} from "@fortawesome/free-solid-svg-icons";
+import {faCirclePlus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {getTimeText} from "../../helpers/timeTextHelper";
 import {faMessage} from "@fortawesome/free-regular-svg-icons";
 import {PostData} from "../../models/PostData";
 import PostComment from "../PostComment/PostComment";
+import {addHype} from "../../helpers/addHypeHelper/addHypeHelper";
 
 interface PostProps {
-    postData: CommentablePostData,
+    postData: PostData,
+    addHype(): any
 }
 
 const Post: FC<PostProps> = (props) => {
-    const [comment, setComment] = useState('');
+    const [commentInput, setCommentInput] = useState('');
+    const [comments, setComments] = useState<PostData[]>([])
 
     const handleCommentChange = (input: string) => {
-       setComment(input);
+       setCommentInput(input);
     }
 
     const handleCommentSubmit = () => {
-        props.postData.comments.push(new PostData(props.postData.postData.user, comment));
-        setComment('');
+        setComments([...comments, new PostData(props.postData.user, commentInput)]);
+        setCommentInput('');
+    }
+
+    const handleHype = (index: number) => {
+        setComments(addHype(comments, index));
     }
 
     return (
         <div className="Post" data-testid="Post">
-            <PostComment postData={props.postData.postData} />
+            <PostComment postData={props.postData} addHype={() => props.addHype()}/>
             <div className="comment">
                 <div className="comment-left">
                     <FontAwesomeIcon className="comment-icon" icon={faMessage} />
                     <input
-                        value={comment}
+                        value={commentInput}
                         className="comment-text"
                         placeholder="Add comment"
                         onKeyDown={e => {
@@ -43,8 +48,8 @@ const Post: FC<PostProps> = (props) => {
                 </div>
                 <FontAwesomeIcon className="comment-icon" icon={faCirclePlus} />
             </div>
-            {props.postData.comments.length > 0 && <hr className="post-comment-divider"/>}
-            {props.postData.comments.map((post, index) => <PostComment key = {index} postData = {post} />)}
+            {comments.length > 0 && <hr className="post-comment-divider"/>}
+            {comments.map((post, index) => <PostComment addHype={() => handleHype(index)} key = {index} postData = {post} />)}
         </div>
     );
 }
