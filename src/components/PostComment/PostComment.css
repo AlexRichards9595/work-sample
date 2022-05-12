@@ -3,36 +3,36 @@
 .post-header {
     display: flex;
     flex-direction: row;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
 }
 
 .post-header-text {
     display: flex;
     flex-direction: column;
-    margin-left: 16px;
+    margin-left: 1rem;
 }
 
 h2 {
-    font-size: 18px;
+    font-size: 1.125rem;
     margin: 0;
     color: rgba(18, 21, 29, 1);
 }
 
 .post-header-text > p {
     margin: 0;
-    font-size: 12px;
+    font-size: .75rem;
     color: rgba(18, 21, 29, 0.6);
 }
 
 img {
-    height: 60px;
-    width: 60px;
+    height: 3.75rem;
+    width: 3.75rem;
     border-radius: 50%;
 }
 
 .post-body {
-    margin: 16px 0;
-    font-size: 12px;
+    margin: 1rem 0;
+    font-size: .75rem;
     color: rgba(18, 21, 29, 0.87);
 }
 
@@ -43,12 +43,12 @@ img {
 }
 
 .post-counts > p {
-    font-size: 10px;
-    margin-right: 13px;
+    font-size: .625rem;
+    margin-right: .75rem;
 }
 
 .icon {
-    height: 16px;
-    width: 12px;
-    margin-right: 10px;
+    height: 1rem;
+    width: .75rem;
+    margin-right: .625rem;
 }

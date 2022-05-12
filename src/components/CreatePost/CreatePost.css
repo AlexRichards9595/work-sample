@@ -2,20 +2,18 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #FFFFFF;
-    width: auto;
-    height: 137px;
-    padding: 16px;
-    margin: 16px 0;
+    height: 15vh;
+    padding: 1rem;
+    margin: 1rem 0;
     border: 1px solid #CED7E7;
     border-radius: 10px;
 }
 
 input {
-    height: 50px;
+    height: 3.125rem;
     border: 1px solid #CED7E7;
     border-radius: 8px;
-    padding: 16px;
+    padding: 1rem;
     box-sizing: border-box;
 }
 
@@ -23,16 +21,15 @@ input {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 39px;
+    height: 2.4375rem;
 }
 
 .bottom-buttons {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 30%;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: .875rem;
     color: rgba(18, 21, 29, 0.6);
 }
 
@@ -41,16 +38,25 @@ input {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 45%;
-    margin-right: 20px;
+}
+
+.bottom-buttons > div:first-child {
+    margin-right: 1.25rem;
+}
+
+.icon {
+    width: 1rem;
+    height: 1.25rem;
+    margin-right: .5rem;
+    color: rgba(18, 21, 29, 0.6);
 }
 
 button {
     background-color: #006CFA;
-    width: 80px;
+    width: 5rem;
     color: white;
     border-radius: 8px;
     border: none;
-    font-size: 12px;
+    font-size: .75rem;
     font-weight: 600;
 }

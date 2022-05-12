@@ -22,12 +22,12 @@ const CreatePost: FC<CreatePostProps> = (props) => {
             <div className="bottom">
                 <div className="bottom-buttons">
                     <div>
-                        <FontAwesomeIcon icon={faCamera} />
+                        <FontAwesomeIcon className="icon" icon={faCamera} />
                         <p>Add media</p>
                     </div>
                     <div>
-                        <FontAwesomeIcon icon={faVideo} />
-                        <p>Add media</p>
+                        <FontAwesomeIcon className="icon" icon={faVideo} />
+                        <p>Go Live</p>
                     </div>
                 </div>
                 <button type='submit'>Post</button>

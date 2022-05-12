@@ -2,10 +2,10 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 30px;
+    padding: 1.875rem;
     border: 1px solid #CED7E7;
     border-radius: 10px;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
 }
 
 .comment {
@@ -16,15 +16,15 @@
     border-radius: 100px;
     width: 100%;
     box-sizing: border-box;
-    padding: 0 16px;
-    font-size: 14px;
+    padding: 0 1rem;
+    font-size: .875rem;
     color: rgba(18, 21, 29, 0.6);
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
 }
 
 .comment-text {
     background: none;
-    padding: 10px 16px;
+    padding: .625rem 1rem;
     border: none;
     height: auto;
     width: 100%;
@@ -43,12 +43,12 @@ input:focus {
 }
 
 .comment-icon {
-    height: 18px;
-    width: 18px;
+    height: 1.125rem;
+    width: 1.125rem;
 }
 
 .post-comment-divider {
     width: 100%;
     border-top: 1px solid #CED7E7;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
 }
