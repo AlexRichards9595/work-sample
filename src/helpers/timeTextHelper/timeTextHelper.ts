@@ -5,22 +5,16 @@ export const getTimeText = (dateCreated: Date): string => {
     const nowM = moment(now);
     const dateCreatedM = moment(dateCreated);
 
-    const oneMinute = 60000;
-    const oneHour = oneMinute * 60;
-    const oneDay = oneHour * 24;
-    const oneWeek = oneDay * 7
-
-    const timeDifference = now.getTime() - dateCreated.getTime();
     if (nowM.diff(dateCreatedM, 'minutes') < 1) {
         return('just now');
     } else if (nowM.diff(dateCreatedM, 'minutes') < 2) {
         return (`a minute ago`);
     } else if (nowM.diff(dateCreatedM, 'hours') < 1) {
-        return(`${Math.floor(timeDifference / oneMinute)} minutes ago`);
+        return(`${(nowM.diff(dateCreatedM, 'minutes'))} minutes ago`);
     } else if (nowM.diff(dateCreatedM, 'hours') < 2) {
         return(`an hour ago`);
     } else if (nowM.diff(dateCreatedM, 'days') < 1) {
-        return(`${Math.floor(timeDifference / oneHour)} hours ago`);
+        return(`${(nowM.diff(dateCreatedM, 'hours'))} hours ago`);
     } else if (nowM.diff(dateCreatedM, 'days') < 2) {
         return(`Yesterday`);
     } else if (nowM.diff(dateCreatedM, 'weeks') < 1) {
