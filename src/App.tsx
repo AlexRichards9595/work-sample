@@ -15,7 +15,7 @@ function App() {
     };
 
     const createPost = (content: string) => {
-        setPosts([...posts, new CommentablePostData(new PostData(user, content))])
+        setPosts([new CommentablePostData(new PostData(user, content)), ...posts])
     }
     return (
     <div className="App">
